@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Shooter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="ui-overlay">
+            <div id="top-bar">
+                <div id="language-toggle">
+                    <button id="lang-en" class="lang-btn active" aria-label="Switch to English">EN</button>
+                    <button id="lang-zh" class="lang-btn" aria-label="切换到中文">中文</button>
+                </div>
+                <div id="accessibility-controls">
+                    <button id="colorblind-toggle" class="access-btn" aria-label="Toggle Color Blind Mode">Color Blind</button>
+                    <button id="high-contrast-toggle" class="access-btn" aria-label="Toggle High Contrast Mode">High Contrast</button>
+                    <button id="audio-cues-toggle" class="access-btn active" aria-label="Toggle Audio Cues">Audio Cues</button>
+                </div>
+            </div>
+            
+            <div id="game-stats">
+                <div id="health-bar-container">
+                    <span id="health-label" class="stat-label">Health:</span>
+                    <div id="health-bar">
+                        <div id="health-fill"></div>
+                    </div>
+                    <span id="health-text">100</span>
+                </div>
+                <div id="score-container">
+                    <span id="score-label" class="stat-label">Score:</span>
+                    <span id="score-text">0</span>
+                </div>
+                <div id="ammo-container">
+                    <span id="ammo-label" class="stat-label">Ammo:</span>
+                    <span id="ammo-text">30</span>
+                </div>
+                <div id="wave-container">
+                    <span id="wave-label" class="stat-label">Wave:</span>
+                    <span id="wave-text">1</span>
+                </div>
+                <div id="money-container">
+                    <span id="money-label" class="stat-label">Money:</span>
+                    <span id="money-text">$0</span>
+                </div>
+                <div id="shop-button-container">
+                    <button id="shop-btn" class="game-btn">Shop (O)</button>
+                </div>
+            </div>
+            
+            <div id="instructions">
+                <p id="instructions-text">Move: WASD | Shoot: Mouse Click | Reload: R | Shop: O | Grenade: G | Pause: P | Color Blind: 8 | High Contrast: 9 | Audio Cues: 0</p>
+            </div>
+        </div>
+        
+        <canvas id="game-canvas"></canvas>
+        
+        <div id="pause-overlay" class="screen hidden">
+            <h2 id="pause-title">PAUSED</h2>
+            <p id="pause-instructions">Press P to Resume</p>
+        </div>
+        
+        <div id="game-over-screen" class="screen hidden">
+            <h2 id="game-over-title">Game Over</h2>
+            <p id="final-score-text">Final Score: <span id="final-score">0</span></p>
+            <p id="wave-reached-text">Waves Survived: <span id="final-wave">0</span></p>
+            <button id="restart-btn" class="game-btn">Restart</button>
+        </div>
+        
+        <div id="start-screen" class="screen">
+            <h1 id="game-title">Zombie Shooter</h1>
+            <p id="start-instructions">Click to Start</p>
+            <div id="accessibility-info">
+                <h3 id="accessibility-title">Accessibility Features</h3>
+                <ul id="accessibility-list">
+                    <li>Color Blind Mode: Different shapes for enemies</li>
+                    <li>High Contrast Mode: Enhanced visibility</li>
+                    <li>Audio Cues: Sound feedback for game events</li>
+                    <li>Screen Reader Support: ARIA labels throughout</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="shop-screen" class="screen hidden">
+            <div id="shop-content">
+                <h2 id="shop-title">Shop</h2>
+                <div id="money-display-shop">
+                    <span id="money-label-shop">Money:</span>
+                    <span id="money-text-shop">$0</span>
+                </div>
+                <div id="shop-tabs">
+                    <button class="shop-tab active" data-tab="guns">Guns</button>
+                    <button class="shop-tab" data-tab="supplies">Supplies</button>
+                </div>
+                <div id="shop-items-guns" class="shop-section active">
+                    <div id="guns-list"></div>
+                </div>
+                <div id="shop-items-supplies" class="shop-section">
+                    <div id="supplies-list"></div>
+                </div>
+                <button id="close-shop-btn" class="game-btn">Close Shop (O)</button>
+            </div>
+        </div>
+        
+        <div id="screen-reader-announcements" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+    </div>
+    
+    <script src="translations.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
+
