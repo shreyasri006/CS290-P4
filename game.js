@@ -1,3 +1,4 @@
+// Created by Shreyas Sreenath and Yog Trivedi
 // Game configuration - Made harder
 const config = {
     canvasWidth: 1200,
